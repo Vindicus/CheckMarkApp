@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+# simple form added for devise to work with Twitter bootstrap
+gem 'simple_form'
+
+# devise for login and authentication
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
@@ -26,11 +31,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-# simple form added for devise to work with Twitter bootstrap
-gem 'simple_form'
 
-# devise for login and authentication
-gem 'devise'
 
 
 # Use ActiveModel has_secure_password
