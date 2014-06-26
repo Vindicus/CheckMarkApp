@@ -3,6 +3,7 @@
 <div>
 <% if user_signed_in? %>
     <p>Welcome <%= current_user.first_name %>, Not you? <%= link_to "Sign out",destroy_user_session_path, :method => :delete %></p>
+  <p><%= link_to "Update account information",edit_user_registration_path %>
   <% else %>
 <p><%= link_to "Register Account",new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %></p>
 <% end %>
