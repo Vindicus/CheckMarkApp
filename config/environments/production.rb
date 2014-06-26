@@ -81,5 +81,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
-  #config.action_mailer.default_url_options = { host: 'localhost:3000' } 
+  config.action_mailer.default_url_options = { host: 'http://checkmark-vindicus.herokuapp.com/' } 
+   config.action_mailer.raise_delivery_errors = true
+   config.action_mailer.delivery_method= :smtp
+ config.action_mailer.smtp_settings={
+    address: "smtp.sendgrid.net",
+    port: 587,
+    domain: "heroku.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "app26786686@heroku.com",
+    password: "xqz0egff"
+    }
 end
