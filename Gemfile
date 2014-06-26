@@ -32,6 +32,9 @@ gem 'simple_form'
 # devise for login and authentication
 gem 'devise'
 
+group :development, :test do
+ gem 'foreman'
+end 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
