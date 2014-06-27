@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#Using Twitter Bootstrap for styling
+gem "twitter-bootstrap-rails"
+
 # simple form added for devise to work with Twitter bootstrap
 gem 'simple_form'
 
