@@ -1,0 +1,15 @@
+ <nav>
+     <h1>CheckMark</h1>
+       <ul class="nav-items">
+       <% if user_signed_in? %>
+       <li><p class="welcome-user">Welcome <%= current_user.first_name %> <%= current_user.last_name %></p></li>
+       <li><a href="">Create Appointment</a></li>
+       <li><%= link_to "Update Account",edit_user_registration_path %></li>
+       <li><%= link_to "Sign out",destroy_user_session_path, :method => :delete %></li>
+       <% else %>
+        <li><%= link_to "Register Account",new_user_registration_path %> </li>
+        <li><%= link_to "sign in", new_user_session_path %></li> 
+       <li><a href="">Contact</a></li> 
+       <% end %>
+     </ul>
+    </nav>
