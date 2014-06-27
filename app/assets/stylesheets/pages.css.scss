@@ -1,8 +1,23 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.RemindIt-mkt{
+  height:473px;
+  background-color:rgba(52, 54, 58, 0.96);
+  padding:5px;
+  color:white;
+}
 .center-mkt{
-  background-image:url("center-mkt.jpg");
+  background-image:url("http://wallpapers.wallbase.cc/rozne/wallpaper-849924.jpg");
+  background-repeat:none;
+  background-position:center;
+  background-size:cover;
+  width:100%;
+  height:500px;
+  position:relative;
+}
+.all-options-bck{
+   background-image:url("http://wallpapers.wallbase.cc/rozne/wallpaper-1597093.jpg");
   background-repeat:none;
   background-position:center;
   background-size:cover;
@@ -28,4 +43,20 @@ body{
 .mkt-small{
 
   text-align:center;
+}
+.RemindIt h2, .RemindIt p, .email h2, .email p{
+  text-align:center;
+}
+.phone p,.phone h2{
+  text-align:left;
+}
+.txt-msg{
+  margin-left:16.5%;
+}
+.txt-msg h2,.txt-msg p{
+  text-align:right;
+}
+.all-options-mkt{
+  text-align:center;
+  color:white;
 }
