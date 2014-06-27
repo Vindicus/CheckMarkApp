@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .RemindIt-mkt{
   height:473px;
-  background-color:rgba(52, 54, 58, 0.96);
   padding:5px;
   color:white;
 }
@@ -19,6 +18,15 @@
 .all-options-bck{
    background-image:url("http://wallpapers.wallbase.cc/rozne/wallpaper-1597093.jpg");
   background-repeat:none;
+  background-position:center;
+  background-size:cover;
+  width:100%;
+  height:500px;
+  position:relative;
+}
+.share-it-bck{
+  background-image:url("http://wallpapers.wallbase.cc/rozne/wallpaper-815179.png");
+   background-repeat:none;
   background-position:center;
   background-size:cover;
   width:100%;
@@ -59,4 +67,17 @@ body{
 .all-options-mkt{
   text-align:center;
   color:white;
+}
+.all-options-mkt h2{
+  margin-top:5%;
+}
+.share-it-mkt{
+  color:white;
+}
+.share-it-mkt h2, .share-it-mkt p{
+  text-align:center;
+}
+.signup{
+  position:relative;
+  left:47%;
 }
