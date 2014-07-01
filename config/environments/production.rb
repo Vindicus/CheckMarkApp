@@ -84,13 +84,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'http://checkmark-vindicus.herokuapp.com/' } 
    config.action_mailer.raise_delivery_errors = true
    config.action_mailer.delivery_method= :smtp
- config.action_mailer.smtp_settings={
+  config.action_mailer.smtp_settings={
     address: "smtp.sendgrid.net",
     port: 587,
-    domain: "heroku.com",
+    domain: ENV['HEROKU'],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "app26787666@heroku.com",
-    password: "1o2rsqeh"
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD']
     }
 end

@@ -9,6 +9,9 @@ gem 'simple_form'
 # devise for login and authentication
 gem 'devise'
 
+gem 'foreman'
+
+gem 'unicorn'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
