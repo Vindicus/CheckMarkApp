@@ -14,4 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+
+#hide these from public
 .env
+Procfile
+
