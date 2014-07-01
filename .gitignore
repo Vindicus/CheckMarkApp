@@ -18,5 +18,4 @@
 
 #hide these from public
 .env
-Procfile
 

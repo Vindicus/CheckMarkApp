@@ -9,7 +9,7 @@ gem 'simple_form'
 # devise for login and authentication
 gem 'devise'
 
-gem 'foreman'
+gem 'foreman', group: :development
 
 gem 'unicorn'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
