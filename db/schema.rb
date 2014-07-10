@@ -11,10 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625014203) do
+ActiveRecord::Schema.define(version: 20140710005504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "location"
+    t.date     "date"
+    t.time     "time"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friends", force: true do |t|
+    t.string   "friend_email"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "friends", ["friend_email"], name: "index_friends_on_friend_email", using: :btree
+
+  create_table "invitations", force: true do |t|
+    t.integer  "appointment_id"
+    t.string   "invite_email"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "accept"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

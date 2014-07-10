@@ -8,4 +8,10 @@ class User < ActiveRecord::Base
   validates :phone_number, presence: true, format:{with: /[0-9]{3}-[0-9]{3}-[0-9]{4}/,
     message: "Your phone number must be in xxx-xxx-xxxx format."  }
   
+  has_many :appointments
+  has_many :invitations
+  
+   def self.email_exist(email)
+   self.exists?(:email => email)
+  end
 end

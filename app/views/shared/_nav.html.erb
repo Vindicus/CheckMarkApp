@@ -1,9 +1,9 @@
  <nav>
-     <h1>CheckMark</h1>
+   <h1><%= link_to "CheckMark",appointments_path %></h1>
        <ul class="nav-items">
        <% if user_signed_in? %>
        <li><p class="welcome-user">Welcome <%= current_user.first_name %> <%= current_user.last_name %></p></li>
-       <li><a href="">Create Appointment</a></li>
+         <li><%=link_to "Create Appointment",new_appointment_path %></li>
        <li><%= link_to "Update Account",edit_user_registration_path %></li>
        <li><%= link_to "Sign out",destroy_user_session_path, :method => :delete %></li>
        <% else %>
