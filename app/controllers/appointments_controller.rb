@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   def index
-     @user_appointments=current_user.appointments.order(created_at: :desc).limit(10)
+    @user_appointments=current_user.appointments.order(created_at: :desc).limit(10)
     @appointment=Appointment.joins(:invitations).where('invitations.invite_email' => current_user.email)
 
   end
@@ -12,9 +12,7 @@ class AppointmentsController < ApplicationController
   end
   
   def create
-    
     @appointment=current_user.appointments.new(appointment_params)
-  
     if invite_success? && @appointment.save
         flash[:success] = "You successfully created your appointment"
         redirect_to action: :index
@@ -23,7 +21,6 @@ class AppointmentsController < ApplicationController
         render "new"
   end
   end
-  
   
      def edit
     @edit_appointment=Appointment.find(params[:id])
@@ -40,7 +37,7 @@ class AppointmentsController < ApplicationController
            invite.update_attributes(user_id: current_user.id)
       else
         Invitation.where(invite_email: invite.invite_email).destroy_all
-        flash[:emailerror]="wrong email"
+           flash[:emailerror]="Your friend's email is not associated with CheckMark and make sure not to place your email in the friend's list."
         return render 'edit'
    end
     end
@@ -66,7 +63,7 @@ class AppointmentsController < ApplicationController
   def accept_invite
     @accept=Invitation.find(params[:id])
     if @accept.update_attributes(accept: 't')
-      flash[:success] = "accept successful #{@accept.user_id}"
+      flash[:success] = "Appointment accepted"
       redirect_to action: :index
     end
   end
@@ -74,7 +71,7 @@ class AppointmentsController < ApplicationController
   def decline_invite
      @accept=Invitation.find(params[:id])
     if @accept.update_attributes(accept: 'f')
-      flash[:success] = "declined successful #{@accept.user_id}"
+      flash[:error] = "Appointment declined"
       redirect_to action: :index
     end
   end
@@ -84,6 +81,7 @@ class AppointmentsController < ApplicationController
     params.require(:appointment).permit(:title,:description,:location,:date,:time, invitations_attributes:[:id,:invite_email,:accept, :_destroy])
 end
   
+  #method for Create
   def invite_success?
     bool_check=true
     @appointment.invitations.each do |invite|
@@ -92,7 +90,7 @@ end
           if User.email_exist(email_downcase)
               invite.user_id=current_user.id
           else
-              flash[:emailerror]="wrong email"
+              flash[:emailerror]="our friend's email is not associated with CheckMark and make sure not to place your email in the friend's list."
                bool_check=false
           end
      else

@@ -7,7 +7,7 @@ class Invitation < ActiveRecord::Base
   private
   def remove_deletes
     Invitation.where(invite_email: 'delete').destroy_all
-    Invitation.where(invite_email: 'DELETE').destroy_all
+     Invitation.where(invite_email: 'DELETE').destroy_all
     
   end
 end

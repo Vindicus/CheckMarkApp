@@ -1,25 +1,38 @@
-<% if flash[:success] %>
+<div class="container index-list">
+<div class="row">
 <div class="success"><%= flash[:success] %></div>
-  <% end %>
+  <div class="error"><%= flash[:error] %></div>
+
 <div class="Attendee">
-  <h2>Your friends invited you </h2>
-  <% if Invitation.count(:invite_email => current_user.email) != 0 %> 
+  <p> You have <%=Invitation.where(:invite_email => current_user.email).count %> total invitation(s)</p>
+  <h2 class="Appointment_Title">Your Appointment Lists<h2>
+    <br/>
+  <h3 class="CheckMark_lists">Your CheckMark friends invitations </h3>
+
+  <%if Invitation.where(:invite_email => current_user.email).count != 0 %> 
   <% @appointment.each do |appointment| %>
-        <h3><%= appointment.title %></h3>
+        <p class="TitleOfAppointment">Title of Appointment/Event: <%= appointment.title %></p>
+    <p>Location: <%= appointment.location %> </p>
+    <p>Description: <%= appointment.description %></p>
+    <p>Date: <%= appointment.date %></p>
+    <p>Time: <%= appointment.time %> </p>
   <% appointment.invitations.each do |inviter| %>
+    <p class="user_email"> <%= User.find_by(:id => inviter.user_id).email %> invited you: </p>
   <% if inviter.accept == false %>
-  <p>You have not accepted or have declined this invitation, accept now</p>
+  <p>You have not accepted or have declined this invitation, To keep track of it, accept now!</p>
   
-  <h3><%= link_to "Accept", accept_invite_appointment_path(inviter),:method => :patch %></h3>
+    <%= link_to "Accept", accept_invite_appointment_path(inviter),:method => :patch, class: "accept" %>
   
   <% else %>
-  <p>Can't attend?, decline it</p>
-  <h3><%= link_to "Decline", decline_invite_appointment_path(inviter),:method => :patch %></h3>
+  <p>Decline this appointment to not be notified of this appointment</p>
+    <%= link_to "Decline", decline_invite_appointment_path(inviter),:method => :patch, class: "decline" %>
   <% end %>
+   <br/>
+    <br/>
   
-   <%= User.find_by(:id => inviter.user_id).email %>
   <% end %>
   <% end %>
+    
   <% else %>
   <p>No friendly appointments at this time </p>
   
@@ -30,23 +43,26 @@
 <br/>
 <br/>
 </div>
+    </div>
+ </div>
+  <div class="container index-list">
+<div class="row">
 <div class="users">
-  <h2>Your Appointments</h2>
+  <h3 class="CheckMark_lists">Your Appointments</h3>
 <% @user_appointments.each do |appointment| %>
-  <h3><%= link_to appointment.title, edit_appointment_path(appointment) %></h3>
+   <p class="TitleOfAppointment">Title of Appointment/Event: <%= appointment.title %></p>
+    <p>Location: <%= appointment.location %> </p>
+    <p>Description: <%= appointment.description %></p>
+    <p>Date: <%= appointment.date %></p>
+    <p>Time: <%= appointment.time %> </p>
+<div class="E-D-links">
+  <%= link_to "Edit", edit_appointment_path(appointment), class: "edit" %>
 <%= link_to 'Destroy', appointment_path(appointment),
-                    method: :delete, data: { confirm: 'Are you sure?' } %>
-<p>Location:
-<%= appointment.location %>
-</p>
-  <p> Description:
-<%= appointment.description %>
-</p>
-  <p>Date of Appointment
-<%= appointment.date %>
-  </p>
-  <p>Time of Appointment
-<%= appointment.time %>
-  </p>
-</div>
+  method: :delete, data: { confirm: 'Are you sure?' }, class: "destroy" %></div>
+<br/>
+    <br/>
 <% end %>
+  
+    </div>
+  </div>
+</div>

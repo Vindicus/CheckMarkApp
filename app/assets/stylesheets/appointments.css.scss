@@ -1,3 +1,30 @@
 // Place all the styles related to the appointments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.index-list,.create-new,.edit-current{
+  background:rgba(36, 37, 40, 0.88);
+  margin:0 auto;
+  padding:2%;
+  width:600px;
+  border-radius:14px;
+  margin-top:2%;
+}
+.Appointment_Title,.CheckMark_lists,.TitleOfAppointment,.Attendee p, .Attendee .accept, .Attendee .decline, .users p,.edit,.destroy,.E-D-links{
+  text-align:center;
+  display:block;
+}
+.edit,.destroy{
+  display:inline-block;
+}
+.TitleOfAppointment,.Attendee p,.success,.error{
+  color:white;
+}
+p.user_email{
+  font-weight:bold;
+}
+.create-new,.edit-current{
+  text-align:center;
+}
+label{
+  color:white;
+}
