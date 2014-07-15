@@ -16,7 +16,7 @@
     <p>Description: <%= appointment.description %></p>
     <p>Date: <%= appointment.date %></p>
     <p>Time: <%= appointment.time %> </p>
-  <% appointment.invitations.each do |inviter| %>
+    <% appointment.invitations.where(:invite_email => current_user.email).each do |inviter| %>
     <p class="user_email"> <%= User.find_by(:id => inviter.user_id).email %> invited you: </p>
   <% if inviter.accept == false %>
   <p>You have not accepted or have declined this invitation, To keep track of it, accept now!</p>
