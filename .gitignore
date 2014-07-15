@@ -15,7 +15,8 @@
 /log/*.log
 /tmp
 
-
 #hide these from public
 .env
+
+
 
