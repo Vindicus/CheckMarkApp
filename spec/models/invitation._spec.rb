@@ -1,5 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Invitation, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Invitation do
+  
+ xit "is invalid if a duplicate is found" do
+    FactoryGirl.create(:invitation, invite_email: "test1@test.com")
+    subject {FactoryGirl.build(:invitation, invite_email: "test1@test.com" )}
+    
+    expect(subject).to_not be_valid
+  end
 end
