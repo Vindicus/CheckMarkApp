@@ -6,7 +6,8 @@ $( document ).on( 'click', '.remove', function(){
   $(this).first().parent().hide();
 });
 $(".add").click(function(){
-  clone=$(".add").prev().children(".fields").first().clone();
+  clone=$(".add").prev().children(".first_field").first().clone();
+  clone.removeClass("first_field");
   clone.css("display","");
   ArrayIndex++;
   clone.find("label").attr("for","appointment_invitations_attributes_"+ArrayIndex+"_invite_email");
@@ -16,7 +17,8 @@ clone.find("input[type=hidden]").attr("id","appointment_invitations_attributes_"
   //$(".add").after();
   $(".emailF").append(clone);
     
-    
   });
 
+$("a.accept").parent().addClass("accept");
+  $("a.decline").parent().addClass("decline");
 });

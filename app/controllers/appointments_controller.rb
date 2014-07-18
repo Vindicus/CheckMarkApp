@@ -18,6 +18,7 @@ class AppointmentsController < ApplicationController
         redirect_to action: :index
     else
         flash[:error] = "Your appointment was not saved"
+      @appointment.invitations.build if @appointment.invitations.blank?
         render "new"
   end
   end
@@ -46,6 +47,7 @@ class AppointmentsController < ApplicationController
       return redirect_to action: :index
     else
        flash[:error] = "Your appointment was not saved"
+      @edit_appointment.invitations.build if @edit_appointment.invitations.blank?
       render "edit"
     end
   end
@@ -89,8 +91,9 @@ end
       if email_downcase != current_user.email
           if User.email_exist(email_downcase)
               invite.user_id=current_user.id
+        
           else
-              flash[:emailerror]="our friend's email is not associated with CheckMark and make sure not to place your email in the friend's list."
+              flash[:emailerror]="your friend's email is not associated with CheckMark."
                bool_check=false
           end
      else

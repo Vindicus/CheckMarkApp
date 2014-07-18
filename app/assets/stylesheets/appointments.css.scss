@@ -1,30 +1,98 @@
 // Place all the styles related to the appointments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.index-list,.create-new,.edit-current{
-  background:rgba(36, 37, 40, 0.88);
-  margin:0 auto;
-  padding:2%;
-  width:600px;
-  border-radius:14px;
-  margin-top:2%;
+
+div.flash-message-error{
+  background: -webkit-linear-gradient(rgb(253, 37, 37), #831D1D); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgb(253, 37, 37), #831D1D); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgb(253, 37, 37), #831D1D); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgb(253, 37, 37), #831D1D); /* Standard syntax */
+  
 }
-.Appointment_Title,.CheckMark_lists,.TitleOfAppointment,.Attendee p, .Attendee .accept, .Attendee .decline, .users p,.edit,.destroy,.E-D-links{
+div.flash-message-success{
+  background: -webkit-linear-gradient(#2F2FA7, #2600EB); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#2F2FA7, #2600EB); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#2F2FA7, #2600EB); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#2F2FA7, #2600EB); /* Standard syntax */
+ 
+}
+div.flash-message-error p, div.flash-message-success p{
   text-align:center;
-  display:block;
+  font-size:18px;
+  margin:0;
 }
-.edit,.destroy{
-  display:inline-block;
+h2.title{
+  text-align:center;
 }
-.TitleOfAppointment,.Attendee p,.success,.error{
+section.box-personal{
+   padding:20px;
+ margin-bottom:20px;
+  background-color:#47473C;
+  position:relative;
+  border:1px solid rgb(223, 223, 235);
+}
+section.accept{
+    border:1px solid rgb(223, 223, 235);
+  padding:20px;
+ margin-bottom:20px;
+  background-color:rgb(109, 20, 20);
+  position:relative;
+}
+section.decline{
+   border:1px solid rgb(223, 223, 235);
+  padding:20px;
+ margin-bottom:20px;
+  background-color:#268B99;
+  position:relative;
+}
+
+section.box-invite p, section.box-personal p{
+  text-align:center;
+}
+a.accept, a.decline,a.edit,a.destroy{
+position:relative;
+  left:47%;
+  background: -webkit-linear-gradient(#BBB631, #5A752A); /* For Safari 5.1 to 6.0 */
+  background: -o-llinear-gradient(#BBB631, #5A752A); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#BBB631, #5A752A); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#BBB631, #5A752A);
+  width:50px;
+  padding:10px;
   color:white;
+  border:1px solid rgb(124, 118, 118);
 }
-p.user_email{
+a.edit,a.destroy{
+  left:45%;
+}
+a.accept:hover, a.decline:hover,a.edit:hover,a.destroy:hover{
+  text-decoration:none;
+  color:white;
+  background: -webkit-linear-gradient(#535252, #141314);/* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#535252, #141314); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#535252, #141314); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#535252, #141314);
+}
+span{
   font-weight:bold;
+  text-decoration:underline;
 }
-.create-new,.edit-current{
-  text-align:center;
+p.TitleOfAppointment{
+  font-size:30px;
 }
-label{
+ul.error-msgs, label{
   color:white;
+}
+span.error{
+  display:none;
+}
+div.new_form, div.edit-current{
+  background:rgba(36, 37, 40, 0.88);
+  border-radius:12px;
+  padding:10px;
+}
+div.create-new,div.edit-appointment{
+  margin-left:300px;
+}
+div.form-errors{
+  margin-left:60px;
 }

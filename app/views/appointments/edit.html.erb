@@ -1,19 +1,20 @@
+<div class="flash-message-error"><p class="error"><%= flash[:error] %></p>
+<p class="error"><%= flash[:emailerror] %></p></div>
+ <h2 class="title">Edit this appointment</h2>
 <div class="container edit-current">
 <div class="row">
-<div class="error"><%= flash[:error] %><br/>
-<%= flash[:emailerror] %></div>
-
-<% if @edit_appointment.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@edit_appointment.errors.count, "error") %> prohibited this post from being saved:</h2>
- 
-    <ul>
+  <div class="form-errors">
+    <% if @edit_appointment.errors.any? %>
+    <p><%= pluralize(@edit_appointment.errors.count, "error") %> prohibited this post from being saved:</p>
+    <ul class="error-msgs">
       <% @edit_appointment.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-  <%= render partial: 'form_edit' %>
+  </ul>
+    </div>
+  <% end %>
+  <% end %>
+    <div class="edit-appointment">
+   <%= render partial: 'form_edit' %>
+</div>
   </div>
 </div>

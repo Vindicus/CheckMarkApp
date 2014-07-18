@@ -1,5 +1,4 @@
- <h2>Edit this appointment</h2>
-<p>To remove an email from the list, replace the email with the word 'delete'</p>
+<p>**To remove an email from the list, replace the email with the word 'delete'</p>
 <%= simple_form_for @edit_appointment do |f| %>
 <%= f.input :title, placeholder: 'your title of appointment goes here' %>
 <%= f.input :location, placeholder: 'your appointment location goes here' %>
@@ -9,8 +8,8 @@
 <div class="emailF">
 <%= f.fields_for :invitations do |builder| %>
 
-<p class="fields">
-  <%= builder.label :invite_email, "Friend email" %>
+<p class="fields first_field">
+  <%= builder.label :invite_email, "**Friend email" %>
   <%= builder.email_field :invite_email %>
    <%=builder.hidden_field :accept, :value => 'f' %>
 </p>

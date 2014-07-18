@@ -1,4 +1,3 @@
- <h2>Create a new appointment</h2>
 <%= simple_form_for @appointment do |f| %>
 <%= f.input :title, placeholder: 'your title of appointment goes here' %>
 <%= f.input :location, placeholder: 'your appointment location goes here' %>
@@ -7,7 +6,7 @@
 <%= f.input :time, placeholder: 'time of appointment goes here' %>
 <%= f.fields_for :invitations do |builder| %>
 <div class="emailF">
-<p class="fields">
+<p class="fields first_field">
   <%= builder.label :invite_email, "Invite your local CheckMark friend" %>
   <%= builder.email_field :invite_email %>
   <%=builder.hidden_field :accept, :value => 'f' %>
@@ -15,7 +14,7 @@
 <a class="remove" href="javascript:void(0)">Remove Email</a>
 </p>
 </div>
-<a class="add" href="javascript:void(0)">Add Email field</a>
   <% end %>
+<a class="add" href="javascript:void(0)">Add Email field</a>
 <%= f.button :submit %>
 <% end %>
