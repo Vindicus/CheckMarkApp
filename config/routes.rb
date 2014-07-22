@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get 'appointments/index'
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: '/admin/jobs'
+  
 
   devise_for :users
   get 'pages/index'
@@ -13,6 +16,7 @@ Rails.application.routes.draw do
     member do
       patch 'accept_invite'
       patch 'decline_invite'
+      patch 'reminder_update'
     end
   end
   # Example of regular route:

@@ -8,12 +8,16 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment=Appointment.new
+    @appointment.reminders.build
     @appointment.invitations.build
   end
   
   def create
     @appointment=current_user.appointments.new(appointment_params)
     if invite_success? && @appointment.save
+      #ReminderWorker.perform_async(current_user, @appointment)
+        #ReminderMailer.delay_for(time_hour.hour).send_email_reminder(current_user,@appointment)
+         ReminderMailer.send_email_reminder(current_user,@appointment)
         flash[:success] = "You successfully created your appointment"
         redirect_to action: :index
     else
@@ -65,6 +69,9 @@ class AppointmentsController < ApplicationController
   def accept_invite
     @accept=Invitation.find(params[:id])
     if @accept.update_attributes(accept: 't')
+        Appointment.joins(:invitations).find_by("invitations.id"=> params[:id]).reminders.find_or_create_by(:user_id => current_user.id) do |reminder|
+        reminder.email_accept = false, reminder.phone_number_accept = false,reminder.phone_sms_accept = false
+        end
       flash[:success] = "Appointment accepted"
       redirect_to action: :index
     end
@@ -73,19 +80,36 @@ class AppointmentsController < ApplicationController
   def decline_invite
      @accept=Invitation.find(params[:id])
     if @accept.update_attributes(accept: 'f')
+      Appointment.joins(:invitations).find_by("invitations.id"=> params[:id]).reminders.find_or_create_by(:user_id => current_user.id).destroy
       flash[:error] = "Appointment declined"
       redirect_to action: :index
     end
   end
   
+   def reminder_update
+    @appoint= Appointment.joins(:invitations).find_by("invitations.id"=> params[:id])
+   if @appoint.reminders.find_by("user_id" => current_user.id).update_attributes(email_accept: params[:email_accept], phone_number_accept: params[:phone_number_accept],phone_sms_accept: params[:phone_sms_accept])
+     #queue the schedule as specified in the reminder
+     #User.join(:reminders).where("reminders.user_id" => current_user.id).each do |user|
+     # if user.reminders.email_accept => true =====> go deliver user.email
+     #etc etc
+     #end
+     redirect_to action: :index
+   end
+  end
+  
   private
   def appointment_params
-    params.require(:appointment).permit(:title,:description,:location,:date,:time, invitations_attributes:[:id,:invite_email,:accept, :_destroy])
-end
+     params.require(:appointment).permit(:title,:description,:location,:date,:time, invitations_attributes:[:id,:invite_email,:accept, :_destroy],
+      reminders_attributes:[:id, :email_accept, :phone_number_accept, :phone_sms_accept, :appointment_id, :user_id, :_destroy])
+  end
   
   #method for Create
   def invite_success?
     bool_check=true
+    @appointment.reminders.each do |accept|
+      accept.user_id = current_user.id
+    end
     @appointment.invitations.each do |invite|
       email_downcase=invite.invite_email.downcase
       if email_downcase != current_user.email

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   
   has_many :appointments
   has_many :invitations
-  
+  has_many :reminders
    def self.email_exist(email)
    self.exists?(:email => email)
   end

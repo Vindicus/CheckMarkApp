@@ -12,6 +12,10 @@ gem 'devise'
 gem 'foreman', group: :development
 
 gem 'unicorn'
+
+gem 'sidekiq'
+
+gem 'sinatra', require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record

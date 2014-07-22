@@ -4,6 +4,16 @@
 <%= f.input :description, placeholder: 'optional description goes here' %>
 <%= f.input :date, placeholder: 'date of appointment goes here' %>
 <%= f.input :time, placeholder: 'time of appointment goes here' %>
+
+<%=f.fields_for :reminders do |ff| %>
+<%=ff.label :email_accept, "Accept Email" %>
+<%=ff.check_box :email_accept %>
+<%=ff.label :phone_number_accept, "Accept number" %>
+<%=ff.check_box :phone_number_accept %>
+<%=ff.label :phone_sms_accept, "Accept sms" %>
+<%=ff.check_box :phone_sms_accept %>
+<% end %>
+
 <%= f.fields_for :invitations do |builder| %>
 <div class="emailF">
 <p class="fields first_field">

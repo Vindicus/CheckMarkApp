@@ -24,6 +24,17 @@
     <%= link_to "Accept", accept_invite_appointment_path(inviter),:method => :patch, class: "accept" %>
   
   <% else %>
+       <%= form_tag reminder_update_appointment_path(inviter), method: "patch" %>
+    <%= hidden_field_tag(:email_accept, 0) %>
+    <%= label_tag(:email_accept, "Email") %>
+    <%= check_box_tag(:email_accept) %>
+    <%= hidden_field_tag(:phone_number_accept, 0) %>
+    <%= label_tag(:phone_number_accept, "number") %>
+    <%= check_box_tag(:phone_number_accept) %>
+    <%= hidden_field_tag(:phone_sms_accept, 0) %>
+    <%= label_tag(:phone_sms_accept, "sms") %>
+    <%= check_box_tag(:phone_sms_accept) %>
+    <%=submit_tag %>
   <p>Decline this appointment to not be notified of this appointment</p>
     <%= link_to "Decline", decline_invite_appointment_path(inviter),:method => :patch, class: "decline" %>
   <% end %>
