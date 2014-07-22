@@ -8,7 +8,7 @@ class Appointment < ActiveRecord::Base
   validates :title, :location, :date, :time, presence: true
   validates_uniqueness_of :title, :scope => [:location, :description, :time, :date], message: "This exact appointment already exists"
     
-    def set_reminder
-      ReminderWorker.perform_async(self.user_id, self.title)
-    end
+  #  def set_reminder
+     # ReminderWorker.perform_async(self.user_id, self.title)
+   # end
 end

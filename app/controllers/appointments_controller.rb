@@ -17,7 +17,7 @@ class AppointmentsController < ApplicationController
     if invite_success? && @appointment.save
       #ReminderWorker.perform_async(current_user, @appointment)
         #ReminderMailer.delay_for(time_hour.hour).send_email_reminder(current_user,@appointment)
-         ReminderMailer.send_email_reminder(current_user,@appointment)
+        ReminderWorker.perform_async(current_user,@appointment)
         flash[:success] = "You successfully created your appointment"
         redirect_to action: :index
     else
