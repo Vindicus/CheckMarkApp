@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @user_appointments=current_user.appointments.order(created_at: :desc).limit(10)
+    @user_appointments=current_user.appointments.order(created_at: :desc)
     @appointment=Appointment.joins(:invitations).where('invitations.invite_email' => current_user.email)
 
   end
@@ -17,7 +17,8 @@ class AppointmentsController < ApplicationController
     if invite_success? && @appointment.save
       #ReminderWorker.perform_async(current_user, @appointment)
         #ReminderMailer.delay_for(time_hour.hour).send_email_reminder(current_user,@appointment)
-        ReminderWorker.perform_async(current_user,@appointment)
+      #  may need to place this code in model
+      Appointment.set_reminder(current_user.id,@appointment.id)
         flash[:success] = "You successfully created your appointment"
         redirect_to action: :index
     else
@@ -94,6 +95,7 @@ class AppointmentsController < ApplicationController
      # if user.reminders.email_accept => true =====> go deliver user.email
      #etc etc
      #end
+     Appointment.set_reminder(current_user.id,@appoint.id)
      redirect_to action: :index
    end
   end

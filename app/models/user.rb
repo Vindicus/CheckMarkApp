@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   validates :first_name, :last_name, presence: true
-  validates :phone_number, presence: true, format:{with: /[0-9]{3}-[0-9]{3}-[0-9]{4}/,
-    message: "Your phone number must be in xxx-xxx-xxxx format."  }
+  validates :phone_number, presence: true
   
   has_many :appointments
   has_many :invitations
