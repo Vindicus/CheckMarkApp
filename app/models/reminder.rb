@@ -1,6 +1,4 @@
 class Reminder < ActiveRecord::Base
   belongs_to :user
-  belongs_to :appointment
-  
-  
+  belongs_to :appointment 
 end

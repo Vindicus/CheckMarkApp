@@ -15,10 +15,9 @@ Rails.application.routes.draw do
   resources :appointments do
     member do
       patch 'accept_invite'
-      patch 'decline_invite'
-      patch 'reminder_update'
     end
   end
+  post 'twilio/voice' => 'twilio#voice'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
