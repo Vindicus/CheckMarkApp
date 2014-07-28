@@ -66,32 +66,6 @@ class AppointmentsController < ApplicationController
       redirect_to action: :index
   end
   
-  #PATCH to allow attendees to decline an invitation
-  #def decline_invite
-    # @accept=Invitation.find(params[:id])
-   # Invitation.decline_invite(@accept,current_user)
-    #  flash[:error] = "Appointment declined"
-   #   redirect_to action: :index
- # end
-  
-  # def reminder_update
-  #   email_accept=params[:email_accept]
-  #   phone_number_accept=params[:phone_number_accept]
-   #  phone_sms_accept=params[:phone_sms_accept]
-   #  @reminded_appointment= Appointment.joins(:invitations).find_by("invitations.id"=> params[:id])
-  #   Appointment.remind_me(current_user,@reminded_appointment,email_accept,phone_number_accept,phone_sms_accept)
-    # Appointment.set_reminder(current_user.id,@appoint.id)
-   #  if @reminded_appointment.reminders.find_by("user_id" => current_user.id).email_accept === true
-   #    flash[:email]= "You have successfully queued for an email reminder"
-  #  end
-   #  if @reminded_appointment.reminders.find_by("user_id" => current_user.id).phone_number_accept === true
-   #    flash[:phone]= "You have successfully queued for a call reminder"
-   # end
-  #   if @reminded_appointment.reminders.find_by("user_id" => current_user.id).phone_sms_accept === true
-   #    flash[:sms]= "You have successfully queued for a text message reminder"
-   # end
-  #   redirect_to action: :index
- #  end
 
 
   private

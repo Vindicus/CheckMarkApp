@@ -16,13 +16,6 @@ class Invitation < ActiveRecord::Base
     end
   end
   
-  #PATCH to allow attendees to decline an invitation
- # def self.decline_invite(accept,current_user)
-   # if accept.update_attributes(accept: 'f')
-   #   Appointment.joins(:invitations).find_by("invitations.id"=> accept.id).reminders.find_or_create_by(:user_id => current_user.id).destroy
-  #  end
-#  end
-  
   
   def remove_deletes
     Invitation.where(invite_email: 'delete').destroy_all

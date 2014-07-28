@@ -45,11 +45,7 @@ class Appointment < ActiveRecord::Base
       bool_check
     end
     
-    #appointment reminders set options
-  #  def self.remind_me(current_user,reminded_appointment,email_accept,phone_number_accept,phone_sms_accept)
-    #   if reminded_appointment.reminders.find_by("user_id" => current_user.id).update_attributes(email_accept: email_accept, phone_number_accept:                #phone_number_accept,phone_sms_accept: phone_sms_accept)
-   #    end
-  #  end
+
     
     #Sidekiq for setting up reminders based on user options
     def self.set_reminder(user_id,appointment_id)
