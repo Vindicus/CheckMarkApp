@@ -83,7 +83,8 @@ ul.error-msgs, label{
   color:white;
 }
 span.error{
-  display:none;
+  color:white;
+  text-decoration:underline;
 }
 div.new_form, div.edit-current{
   background:rgba(36, 37, 40, 0.88);
