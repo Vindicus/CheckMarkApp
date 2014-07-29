@@ -38,7 +38,7 @@ class AppointmentsController < ApplicationController
         flash[:emailerror]="Your friend's email is not associated with CheckMark and make sure not to place your email in the friend's list."
         return redirect_to  action: :edit
     end
-      Appointment.set_reminder(current_user.id,@appointment.id)
+      Appointment.set_reminder(current_user.id,@edit_appointment.id)
       flash[:success] = "You successfully updated your appointment"
       return redirect_to action: :index
     else

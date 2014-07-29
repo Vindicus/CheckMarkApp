@@ -58,7 +58,7 @@ class Appointment < ActiveRecord::Base
           ReminderMailer.delay_until(appointment.time).send_email_reminder(user_id, appointment_id)
         end
         if option.phone_number_accept === true
-          PhoneWorker.perform_async(user_id,appointment_id)
+          PhoneWorker.perform_at(appointment.time,user_id,appointment_id)
         end
       end
     end
