@@ -10,7 +10,7 @@ class PhoneWorker
        @call = @@Client.account.calls.create(
     :from => '+12096473083',
     :to => "+#{user_find.phone_number}",
-    :url => "http://www.todo-122362.usw1-2.nitrousbox.com/twilio/voice?title=#{appointment_title}",
+    :url => "http://checkmark-vindicus.herokuapp.com/twilio/voice?title=#{appointment_title}",
 )
   end
   

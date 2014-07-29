@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   validates :first_name, :last_name, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, format: { with: /[0-9]{11}/,
+  message: "must be in this format ex: 12096691686" }
   
   has_many :appointments
   has_many :invitations

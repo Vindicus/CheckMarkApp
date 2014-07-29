@@ -9,7 +9,7 @@ class SmsWorker
     @@Client.account.messages.create(
       :from => '+12096473083',
       :to => "+#{user_find.phone_number}",
-      :body => "hello, #{user_find.first_name}. You have an appointment called: #{appointment_find.title} coming up. Please see CheckMark for details. Thank you, good bye."
+      :body => "hello, #{user_find.first_name}. You have an appointment titled: #{appointment_find.title}. Please see CheckMark for details. Thank you!"
 )
   end
 
