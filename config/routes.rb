@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get 'appointments/index'
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: '/admin/jobs'
+  
 
   devise_for :users
   get 'pages/index'
@@ -12,9 +15,9 @@ Rails.application.routes.draw do
   resources :appointments do
     member do
       patch 'accept_invite'
-      patch 'decline_invite'
     end
   end
+  post 'twilio/voice' => 'twilio#voice'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

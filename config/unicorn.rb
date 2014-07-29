@@ -7,6 +7,11 @@ before_fork do |server, worker|
     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
     Process.kill 'QUIT', Process.pid
   end
+  
+  
+if defined? Sidekiq
+    @sidekiq_pid ||= spawn("bundle exec sidekiq -C config/sidekiq.yml")
+end
 
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.connection.disconnect!

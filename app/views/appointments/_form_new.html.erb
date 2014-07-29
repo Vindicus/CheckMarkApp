@@ -2,8 +2,17 @@
 <%= f.input :title, placeholder: 'your title of appointment goes here' %>
 <%= f.input :location, placeholder: 'your appointment location goes here' %>
 <%= f.input :description, placeholder: 'optional description goes here' %>
-<%= f.input :date, placeholder: 'date of appointment goes here' %>
 <%= f.input :time, placeholder: 'time of appointment goes here' %>
+
+<%=f.fields_for :reminders do |reminder| %>
+<%=reminder.label :email_accept, "Remind via email" %>
+<%=reminder.check_box :email_accept %>
+<%=reminder.label :phone_number_accept, "Remind via phone number" %>
+<%=reminder.check_box :phone_number_accept %>
+<%=reminder.label :phone_sms_accept, "Remind via text message" %>
+<%=reminder.check_box :phone_sms_accept %>
+<% end %>
+
 <%= f.fields_for :invitations do |builder| %>
 <div class="emailF">
 <p class="fields first_field">

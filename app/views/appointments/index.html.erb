@@ -1,31 +1,34 @@
 <div class="flash-message-success"><p class="success"><%= flash[:success] %></p></div>
+<div class="flash-message-success"><p class="success"><%= flash[:email] %></p></div>
+<div class="flash-message-success"><p class="success"><%= flash[:phone] %></p></div>
+<div class="flash-message-success"><p class="success"><%= flash[:sms] %></p></div>
 <div class="flash-message-error"><p class="error"><%= flash[:error] %></p></div>
-
 <h2 class="title">Your Appointments List</h2>
 
 <div class="container">
   <div class="row">
+    
     <div class="invitations">
   <h3 class="CheckMark_lists">Your CheckMark friends' invitations </h3>
    <p> You have <%=Invitation.where(:invite_email => current_user.email).count %> total invitation(s):</p>
   <%if Invitation.where(:invite_email => current_user.email).count != 0 %> 
-  <% @appointment.each do |appointment| %>
+      <% @invited_appointment.each do |appointment| %>
     <section class="box-invite">
     <p class="TitleOfAppointment"><span>Title of Appointment/Event:</span> <%= appointment.title %></p>
     <p><span>Location:</span> <%= appointment.location %> </p>
     <p><span>Description:</span> <%= appointment.description %></p>
-    <p><span>Date:</span> <%= appointment.date %></p>
     <p><span>Time:</span> <%= appointment.time %> </p>
+      <%if appointment.time < DateTime.now %>
+      <p style="color:red;">this appointment has passed</p>
+      <% end %>
     <% appointment.invitations.where(:invite_email => current_user.email).each do |inviter| %>
       <p class="user_email">Invited by:<span> <%= User.find_by(:id => inviter.user_id).email %></span> </p>
   <% if inviter.accept == false %>
-  <p>You have not accepted or have declined this invitation, To keep track of it, accept now!</p>
-  
+  <p class="queue-msg">You have not accepted this invitation yet. Accept for an email reminder!</p>
     <%= link_to "Accept", accept_invite_appointment_path(inviter),:method => :patch, class: "accept" %>
-  
+  </section>
   <% else %>
-  <p>Decline this appointment to not be notified of this appointment</p>
-    <%= link_to "Decline", decline_invite_appointment_path(inviter),:method => :patch, class: "decline" %>
+  <p class="queued-msg">You have queued for an email reminder for this appointment</p>
   <% end %>
 </section>
   
@@ -37,30 +40,30 @@
   
   <% end %>
     </div>
-      
-   
-<div class="personal">
+
+  <div class="personal">  
   <h3 >My Personal appointments </h3>
   <%if Appointment.where(:user_id => current_user.id).count != 0 %> 
 <% @user_appointments.each do |appointment| %>
-  <section class="box-personal">
+   <section class="box-personal">
    <p class="TitleOfAppointment"><span>Title of Appointment/Event:</span> <%= appointment.title %></p>
     <p><span>Location:</span> <%= appointment.location %> </p>
     <p><span>Description:</span> <%= appointment.description %></p>
-    <p><span>Date:</span> <%= appointment.date %></p>
     <p><span>Time:</span> <%= appointment.time %> </p>
-
+   <%if appointment.time < DateTime.now %>
+      <p style="color:red;">this appointment has passed</p>
+      <% end %>
   <%= link_to "Edit", edit_appointment_path(appointment), class: "edit" %>
 <%= link_to 'Destroy', appointment_path(appointment),
-  method: :delete, data: { confirm: 'Are you sure?' }, class: "destroy" %></div>
-
+  method: :delete, data: { confirm: 'Are you sure?' }, class: "destroy" %>
+ </section>
 <% end %>
    <% else %>
   <p>You have not created any appointments yet </p>
-  
+ </section>
   <% end %>
-  </section>
-    </div>
+   
+  </div>
     </div>
     </div>
  
