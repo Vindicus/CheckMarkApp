@@ -3,8 +3,8 @@ class PhoneWorker
   include Sidekiq::Worker
   
   def perform(user,appointment)
-     account_sid = 'AC3473ee64394d1509ba3c30c111f3c3d6'
-    auth_token = 'fb79802b4f2554463abc35a9c52b3895'
+    account_sid = ENV['ACCOUNT_SID']
+    auth_token = ENV['AUTH_TOKEN']
     @client = Twilio::REST::Client.new account_sid, auth_token
     user_find=User.find(user)
     appointment_find=Appointment.find(appointment)
