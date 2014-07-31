@@ -81,10 +81,10 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
+  #Using Sendgrid for mailing
   config.action_mailer.default_url_options = { host: 'http://checkmark-vindicus.herokuapp.com/' } 
-
-   config.action_mailer.raise_delivery_errors = true
-   config.action_mailer.delivery_method= :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method= :smtp
   config.action_mailer.smtp_settings={
     address: "smtp.sendgrid.net",
     port: 587,
@@ -93,6 +93,5 @@ Rails.application.configure do
     enable_starttls_auto: true,
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD']
-    }
-
+  }
 end
