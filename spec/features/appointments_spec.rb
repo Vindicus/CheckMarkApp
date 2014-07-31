@@ -16,13 +16,13 @@ describe 'Appointments' do
       expect(page).to have_content 'You successfully created your appointment'
     end
 
-  xit 'should delete an appointment' do
-    appointment=FactoryGirl.build(:appointment, title: "birthday", description: "party", location: "home" ,date: "2013-06-07", time: "2000-01-01 09:33:00 UTC" )
-    visit appointments_path
-    within appointment.id.to_s do
-      click_link 'Destroy'
+    xit 'should delete an appointment' do
+      appointment=FactoryGirl.build(:appointment, title: "birthday", description: "party", location: "home" ,date: "2013-06-07", time: "2000-01-01 09:33:00 UTC" )
+      visit appointments_path
+      within appointment.id.to_s do
+        click_link 'Destroy'
+      end
+      expect(page).to have_content "You successfully deleted your appointment"
     end
-    expect(page).to have_content "You successfully deleted your appointment"
-  end
   end
 end
