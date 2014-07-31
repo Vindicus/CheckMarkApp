@@ -26,7 +26,7 @@ p,h2,h3{
 nav{
   margin:0;
   padding:10px 0 10px 0;
-   background: -webkit-linear-gradient(black, rgb(43, 43, 43)); /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(black, rgb(43, 43, 43)); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(black, rgb(43, 43, 43)); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(black, rgb(43, 43, 43)); /* For Firefox 3.6 to 15 */
   background: linear-gradient(black, rgb(43, 43, 43)); /* Standard syntax */
@@ -63,30 +63,30 @@ nav:after{
 }
 /*flash*/
 .alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
  }
 
 .alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
  }
 
 .alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
  }
 
 .alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
  }
 
