@@ -1,12 +1,13 @@
 module Webhookable
 extend ActiveSupport::Concern
 
-def set_header
-       response.headers["Content-Type"] = "text/xml"
-end
+  # Used for Twilio phone calls, creates a response 
+  def set_header
+    response.headers["Content-Type"] = "text/xml"
+  end
 
-def render_twiml(response)
-       render text: response.text
-end
-
+  #renders a TWiML response text
+  def render_twiml(response)
+    render text: response.text
+  end
 end
