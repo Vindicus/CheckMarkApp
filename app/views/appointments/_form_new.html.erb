@@ -15,15 +15,17 @@
 
 <%= f.fields_for :invitations do |builder| %>
 <div class="emailF">
-<p class="fields first_field">
+  <p class="fields first_field">
   <%= builder.label :invite_email, "Invite your local CheckMark friend" %>
   <%= builder.email_field :invite_email %>
   <%=builder.hidden_field :accept, :value => 'f' %>
-<%= builder.hidden_field :_destroy %>
-<a class="remove" href="javascript:void(0)">Remove Email</a>
-</p>
+  <%= builder.hidden_field :_destroy %>
+  <a class="remove" href="javascript:void(0)">Remove Email</a>
+  </p>
 </div>
-  <% end %>
+<% end %>
+
 <a class="add" href="javascript:void(0)">Add Email field</a>
+
 <%= f.button :submit %>
 <% end %>
