@@ -1,7 +1,7 @@
 CheckMarkApp
 ============
 
-This project is a simple appointment reminder app. This allows users to create their own appointments and be reminded via phone calls, text messages, or emails. 
+This project is a simple appointment reminder app. This allows users to create their own appointments and be reminded via phone calls, text messages, or emails.
 Users can also invite friends that have a CheckMark account to the appointment. They can be reminded of the invitation via email.
 
 The hardest parts were getting the modeling relationships correct and using Twilio API:
