@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   get 'appointments/index'
   require 'sidekiq/web'
+  
   mount Sidekiq::Web, at: '/admin/jobs'
   
 
   devise_for :users
+  
   get 'pages/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -12,11 +14,13 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'pages#index'
+  
   resources :appointments do
     member do
       patch 'accept_invite'
     end
   end
+  
   post 'twilio/voice' => 'twilio#voice'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
