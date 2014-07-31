@@ -1,5 +1,5 @@
 .form-container{
-background:rgba(36, 37, 40, 0.88);
+  background:rgba(36, 37, 40, 0.88);
   color:white;
   margin:0 auto;
   padding:2%;
@@ -8,7 +8,7 @@ background:rgba(36, 37, 40, 0.88);
 }
 .new-signup,.new-signin,.update-account,.change-password,.edit-password{
   color:white;
-text-align:center;
+  text-align:center;
   margin-top:1%;
 }
 input{
@@ -21,5 +21,5 @@ form#edit_user{
   margin-left:17%;
 }
 .cancel-account{
-text-align:left;
+  text-align:left;
 }
