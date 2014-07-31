@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
   has_many :appointments
   has_many :invitations
   has_many :reminders
-   def self.email_exist(email)
-   self.exists?(:email => email)
+  
+  private
+  
+  #Checks to see if a friend's email exist in the database
+  def self.email_exist(email)
+    self.exists?(:email => email)
   end
 end
