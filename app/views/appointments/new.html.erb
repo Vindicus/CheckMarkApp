@@ -1,20 +1,21 @@
 <div class="flash-message-error"><p class="error"><%= flash[:error] %></p>
-<p class="error"><%= flash[:emailerror] %></p></div>
- <h2 class="title">Create a new appointment</h2>
+  <p class="error"><%= flash[:emailerror] %></p>
+</div>
+<h2 class="title">Create a new appointment</h2>
 <div class="container new_form">
   <div class="row">
-<div class="form-errors">
-<% if @appointment.errors.any? %>
-    <p><%= pluralize(@appointment.errors.count, "error") %> prohibited this post from being saved:</p>
-    <ul class="error-msgs">
-      <% @appointment.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+    <div class="form-errors">
+      <% if @appointment.errors.any? %>
+      <p><%= pluralize(@appointment.errors.count, "error") %> prohibited this post from being saved:</p>
+      <ul class="error-msgs">
+        <% @appointment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
     </div>
-<% end %>
+      <% end %>
     <div class="create-new">
-  <%= render partial: 'form_new' %>
-</div>
+      <%= render partial: 'form_new' %>
+    </div>
   </div>
 </div>
