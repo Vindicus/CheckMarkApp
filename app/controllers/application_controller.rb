@@ -5,16 +5,21 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def after_sign_in_path_for(resource)
-  appointments_path
-end
+    appointments_path
+  end
  
   protected
+  
   def configure_permitted_parameters
+    #For devise signup allowed parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:first_name, :last_name, :phone_number, :email, :password, :password_confirmation)
-    end
+  end
+  
+    #for devise update allowed parameters
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:first_name, :last_name, :phone_number, :email, :password, :password_confirmation,:current_password)
     end
+    
   end
 end
