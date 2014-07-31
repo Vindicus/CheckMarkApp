@@ -1,20 +1,17 @@
 // Place all the styles related to the appointments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 div.flash-message-error{
   background: -webkit-linear-gradient(rgb(253, 37, 37), #831D1D); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(rgb(253, 37, 37), #831D1D); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(rgb(253, 37, 37), #831D1D); /* For Firefox 3.6 to 15 */
   background: linear-gradient(rgb(253, 37, 37), #831D1D); /* Standard syntax */
-  
 }
 div.flash-message-success{
   background: -webkit-linear-gradient(#2F2FA7, #2600EB); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(#2F2FA7, #2600EB); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(#2F2FA7, #2600EB); /* For Firefox 3.6 to 15 */
   background: linear-gradient(#2F2FA7, #2600EB); /* Standard syntax */
- 
 }
 div.flash-message-error p, div.flash-message-success p{
   text-align:center;
@@ -25,8 +22,8 @@ h2.title{
   text-align:center;
 }
 section.box-personal{
-   padding:20px;
- margin-bottom:20px;
+  padding:20px;
+  margin-bottom:20px;
   background-color:#47473C;
   position:relative;
   border:1px solid rgb(223, 223, 235);
@@ -34,14 +31,14 @@ section.box-personal{
 section.box-invite{
   border:1px solid rgb(223, 223, 235);
   padding:20px;
- margin-bottom:20px;
+  margin-bottom:20px;
   background-color:rgb(109, 20, 20);
   position:relative;
 }
 section.accept{
-   border:1px solid rgb(223, 223, 235);
+  border:1px solid rgb(223, 223, 235);
   padding:20px;
- margin-bottom:20px;
+  margin-bottom:20px;
   background-color:#268B99;
   position:relative;
 }
@@ -50,7 +47,7 @@ section.box-invite p, section.box-personal p{
   text-align:center;
 }
 a.accept, a.decline,a.edit,a.destroy{
-position:relative;
+  position:relative;
   left:47%;
   background: -webkit-linear-gradient(#BBB631, #5A752A); /* For Safari 5.1 to 6.0 */
   background: -o-llinear-gradient(#BBB631, #5A752A); /* For Opera 11.1 to 12.0 */
