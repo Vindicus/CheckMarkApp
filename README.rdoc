@@ -19,3 +19,5 @@ The most interesting parts were setting up actionmailer with Sendgrid, Devise an
 2) I also added an authentication gem called Devise which was easy and fun to work with by simply customizing flash messages, fields, and validations
 3) The next fun part was creating forms to add params to the designated models
 4) The next part was adding nested associated forms where one form works with two or more models amongst appointments, invitations, and reminders
+
+Access <a href="http://checkmark-vindicus.herokuapp.com/"> CheckMark</a>
